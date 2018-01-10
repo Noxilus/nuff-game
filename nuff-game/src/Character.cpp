@@ -12,34 +12,6 @@
 
 using namespace std;
 
-BaseId::BaseId(double h, double m, double a, double r){
-	healthMod = h;
-	magicMod = m;
-	agilityMod = a;
-	strengthMod = r;
-}
-
-ClassIdentifier::ClassIdentifier(double h, double m, double a, double r, ClassType t) : BaseId(h, m, a, r), type(t){}
-
-ClassIdentifier NoClass = ClassIdentifier(0, 0, 0, 0, NoClassType);
-ClassIdentifier KnightClass = ClassIdentifier(0, 0, 10, -10, Knight);
-ClassIdentifier WarriorClass = ClassIdentifier(0, 0, -10, 10, Warrior);
-ClassIdentifier ThiefClass = ClassIdentifier(-10, 0, 10, 0, Thief);
-ClassIdentifier BlacksmithClass = ClassIdentifier(0, -10, 0, 10, Blacksmith);
-ClassIdentifier LumberjackClass = ClassIdentifier(0, 0, -10, 0, Lumberjack);
-ClassIdentifier MageClass = ClassIdentifier(0, 10, 0, -10, Mage);
-ClassIdentifier ArcherClass = ClassIdentifier(10, 0, -10, 0, Archer);
-
-RaceIdentifier::RaceIdentifier(double h, double m, double a, double r, RaceType t) : BaseId(h, m, a, r), type(t){}
-
-RaceIdentifier NoRace = RaceIdentifier( 0, 0, 0, 0, NoRaceType);
-RaceIdentifier HumanRace = RaceIdentifier( 20, 0, 5, -10, NoRaceType);
-RaceIdentifier WoodElfRace = RaceIdentifier( 5, 10, 10, -15, NoRaceType);
-RaceIdentifier OrcRace = RaceIdentifier( 0, -5, -10, 15, NoRaceType);
-RaceIdentifier DarkElfRace = RaceIdentifier( 0, 10, 15, -10, NoRaceType);
-RaceIdentifier DragonlingRace = RaceIdentifier( -5, 15, 10, 0, NoRaceType);
-RaceIdentifier DwarfRace = RaceIdentifier( 5, -10, -5, 10, NoRaceType);
-
 Character::Character() :
 		head(armorSlot),
 		torso(armorSlot),
@@ -49,9 +21,6 @@ Character::Character() :
 
 		primary(WeaponSlot(CarvingKnife)),
 		secondary(weaponSlot),
-
-		charClass(NoClass),
-		charRace(NoRace),
 
 		curMap(&highashPlainsA),
 		name(""),
@@ -81,32 +50,6 @@ Character::~Character(){
 void Character::SetName(string n){
 	name = n;
 	secondary.weapon.name = "Bare Hands";
-}
-
-void Character::SetClass(ClassIdentifier newClass){
-	charClass = newClass;
-}
-
-void Character::SetRace(RaceIdentifier newRace){
-	charRace = newRace;
-}
-
-void Character::SetStats(){
-	double healthMult, magicMult, strengthMult, agilityMult;
-	healthMult = (charClass.healthMod + charRace.healthMod + 100)/100;
-	magicMult = (charClass.magicMod + charRace.magicMod + 100)/100;
-	strengthMult = (charClass.strengthMod + charRace.strengthMod + 100)/100;
-	agilityMult = (charClass.agilityMod + charRace.agilityMod + 100)/100;
-
-	health *= healthMult;
-	magic *= magicMult;
-	strength*= strengthMult;
-	agility *= agilityMult;
-
-	curHealth = health;
-	curMagic = magic;
-	curStrength = strength;
-	curAgility = agility;
 }
 
 void Character::DisplayStats(){
@@ -1415,8 +1358,6 @@ void Character::ResetStats(){
 	feet = armorSlot;
 	primary = WeaponSlot(CarvingKnife);
 	secondary = weaponSlot;
-	charClass = NoClass;
-	charRace = NoRace;
 	curMap = &highashPlainsA;
 	name = "";
 	curX = 8;

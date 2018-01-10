@@ -5,8 +5,8 @@
 #include "ScreenHandler.h"
 
 class SetupHandler {
-	bool doneClass, doneRace, doneSetup;
-	std::string nameText, classText, raceText;
+	bool doneSetup;
+	std::string nameText;
 public:
 	SetupHandler();
 	~SetupHandler();
@@ -14,8 +14,6 @@ public:
 	void StartChoice();
 	void DoIntro();
 	void DoName();
-	void DoClass();
-	void DoRace();
 	void ConfirmSetup();
 	void SetupLoop();
 	void ResetSetup();

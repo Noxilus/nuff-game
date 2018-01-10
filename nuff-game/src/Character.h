@@ -12,32 +12,12 @@ class NPC;
 
 using namespace std;
 
-struct BaseId {
-	double healthMod;
-	double magicMod;
-	double agilityMod;
-	double strengthMod;
-	BaseId(double h, double m, double a, double r);
-};
-
-struct ClassIdentifier : BaseId {
-	ClassType type;
-	ClassIdentifier(double h, double m, double a, double r, ClassType t);
-};
-
-struct RaceIdentifier : BaseId {
-	RaceType type;
-	RaceIdentifier(double h, double m, double a, double r, RaceType t);
-};
-
 class Character {
 public:
 	InvSlot inventory[30];
 	FoodSlot foodInv[10];
 	ArmorSlot head, torso, arms, legs, feet;
 	WeaponSlot primary, secondary;
-	ClassIdentifier charClass;
-	RaceIdentifier charRace;
 	Map *curMap;
 	string name;
 	int curX, curY, gold;
@@ -49,9 +29,6 @@ public:
 	Character();
 	~Character();
 	void SetName(string n);
-	void SetClass(ClassIdentifier newClass);
-	void SetRace(RaceIdentifier newRace);
-	void SetStats();
 	void DisplayStats();
 	void UseItem(ItemType type, int slotNum, int quantity);
 	void EquipArmor(Armor toEquip);
@@ -108,21 +85,6 @@ public:
 };
 
 extern Character player;
-extern ClassIdentifier NoClass;
-extern ClassIdentifier KnightClass;
-extern ClassIdentifier WarriorClass;
-extern ClassIdentifier ThiefClass;
-extern ClassIdentifier BlacksmithClass;
-extern ClassIdentifier LumberjackClass;
-extern ClassIdentifier MageClass;
-extern ClassIdentifier ArcherClass;
-extern RaceIdentifier NoRace;
-extern RaceIdentifier HumanRace;
-extern RaceIdentifier WoodElfRace;
-extern RaceIdentifier OrcRace;
-extern RaceIdentifier DarkElfRace;
-extern RaceIdentifier DragonlingRace;
-extern RaceIdentifier DwarfRace;
 
 class CombatHandler {
 	bool playerFled = false;

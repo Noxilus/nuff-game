@@ -3,7 +3,7 @@
 
 using namespace std;
 
-SetupHandler::SetupHandler() : doneClass(false), doneRace(false), doneSetup(false), nameText(""), classText(""), raceText("") {}
+SetupHandler::SetupHandler() : doneSetup(false), nameText("") {}
 SetupHandler::~SetupHandler(){}
 
 void SetupHandler::DoTitle(){
@@ -45,141 +45,19 @@ void SetupHandler::DoName(){
 	redo = 0;
 }
 
-void SetupHandler::DoClass(){
-	int classChoice, redo;
-	if (!doneClass){
-		cout << "\nPlease choose a class (enter the number):\n1. Knight: +agility -strength\n2. Warrior: +strength -agility\n3. Thief: +agility -health\n4. Blacksmith: +strength -magic\n5. Lumberjack: +stamina -agility\n6. Mage: +magic -strength\n7. Archer: +health -agility\n";
-	}
-	else
-	{
-		cout << "\nPlease reenter a class:\n";
-	}
-	cin >> classChoice;
-	switch (classChoice) {
-	case 1:
-		classText = "Knight";
-		player.SetClass(KnightClass);
-		break;
-	case 2:
-		classText = "Warrior";
-		player.SetClass(WarriorClass);
-		break;
-	case 3:
-		classText = "Thief";
-		player.SetClass(ThiefClass);
-		break;
-	case 4:
-		classText = "Blacksmith";
-		player.SetClass(BlacksmithClass);
-		break;
-	case 5:
-		classText = "Lumberjack";
-		player.SetClass(LumberjackClass);
-		break;
-	case 6:
-		classText = "Mage";
-		player.SetClass(MageClass);
-		break;
-	case 7:
-		classText = "Archer";
-		player.SetClass(ArcherClass);
-		break;
-	default:
-		classText = "Knight";
-		player.SetClass(KnightClass);
-		break;
-	}
-	cout << "\nYou chose " + classText + ". Is this your final decision?\n1.Yes, let's continue\n2.No, let me reselect\n";
-	cin >> redo;
-	switch (redo) {
-	case 2:
-		doneClass = true;
-		DoClass();
-		break;
-	default:
-		doneClass = true;
-		break;
-	}
-	classChoice = 0;
-	redo = 0;
-}
-
-void SetupHandler::DoRace(){
-	int raceChoice, redo;
-	if (!doneRace){
-		cout << "\nPlease choose a race (enter the number):\n1. Human +20% health +5% agility -5% stamina -10% strength\n2. Wood Elf +5% health +10% magic +10% agility -15% strength\n3. Orc +10% stamina +15% strength -5% magic -10% agility\n4. Dark Elf +10% magic +15% agility -5% stamina -10% strength\n5. Dragonling +15% magic +10% agility -5% health -10% stamina\n6. Dwarf +5% health +10% stamina +10% strength -10% magic -5% agility\n";
-	}
-	else
-	{
-		cout << "\nPlease reenter a race:\n";
-	}
-	cin >> raceChoice;
-	switch (raceChoice) {
-	case 1:
-		raceText = "Human";
-		player.SetRace(HumanRace);
-		break;
-	case 2:
-		raceText = "Wood Elf";
-		player.SetRace(WoodElfRace);
-		break;
-	case 3:
-		raceText = "Orc";
-		player.SetRace(OrcRace);
-		break;
-	case 4:
-		raceText = "Dark Elf";
-		player.SetRace(DarkElfRace);
-		break;
-	case 5:
-		raceText = "Dragonling";
-		player.SetRace(DragonlingRace);
-		break;
-	case 6:
-		raceText = "Dwarf";
-		player.SetRace(DwarfRace);
-		break;
-	default:
-		raceText = "Human";
-		player.SetRace(HumanRace);
-		break;
-	}
-	cout << "\nYou chose " + raceText + ". Is this your final decision?\n1. Yes, let's continue\n2. No, let me reselect\n";
-	cin >> redo;
-	switch (redo) {
-	case 2:
-		doneRace = true;
-		DoRace();
-		break;
-	default:
-		doneRace = true;
-		break;
-	}
-	raceChoice = 0;
-	redo = 0;
-}
-
 void SetupHandler::ConfirmSetup(){
-	cout << "\nAh... so you are " << nameText << " the " << raceText << " " << classText << ".\n";
-	player.SetStats();
 	system("pause");
 	sHandler.ClearScreen();
 }
 
 void SetupHandler::SetupLoop(){
 	DoName();
-	DoClass();
-	DoRace();
 	ConfirmSetup();
 }
 
 void SetupHandler::ResetSetup(){
-	doneClass = false;
-	doneRace = false;
 	doneSetup = false;
 	nameText = "";
-	classText = "";
-	raceText = "";
 }
 
 void SetupHandler::ResetMaps(){

@@ -37,27 +37,6 @@ enum WeaponType {
 	CreatureWeapon
 };
 
-enum ClassType {
-	NoClassType,
-	Knight,
-	Warrior,
-	Thief,
-	Blacksmith,
-	Lumberjack,
-	Mage,
-	Archer
-};
-
-enum RaceType {
-	NoRaceType,
-	Human,
-	WoodElf,
-	Orc,
-	DarkElf,
-	Dragonling,
-	Dwarf
-};
-
 enum Action {
 	Up,
 	Down,

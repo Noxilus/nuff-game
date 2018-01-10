@@ -38,10 +38,10 @@
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.422805925" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug.1284761458" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug">
-								<option defaultValue="true" id="gnu.c.link.option.shared.749319950" superClass="gnu.c.link.option.shared" valueType="boolean"/>
+								<option defaultValue="true" id="gnu.c.link.option.shared.749319950" name="Shared (-shared)" superClass="gnu.c.link.option.shared" valueType="boolean"/>
 							</tool>
-							<tool command="g++ -std=c++17" id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.461482905" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug">
-								<option defaultValue="true" id="gnu.cpp.link.option.shared.1989778356" superClass="gnu.cpp.link.option.shared" useByScannerDiscovery="false" valueType="boolean"/>
+							<tool command="g++ -std=c++17 -o NUFFGame" id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.461482905" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug">
+								<option defaultValue="true" id="gnu.cpp.link.option.shared.1989778356" name="Shared (-shared)" superClass="gnu.cpp.link.option.shared" useByScannerDiscovery="false" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.371486179" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
